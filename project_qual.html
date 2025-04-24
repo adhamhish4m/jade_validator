@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade: Qualification</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .split {
+            height: 100%;
+            overflow: auto;
+        }
+
+        .left {
+            width: 100%; /* Adjusted to take full width */
+            overflow: auto;
+        }
+
+        .content {
+            margin: 2rem;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        details {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="split left">
+        <div class="content">
+            <h1>Jade: Qualification</h1>
+            <p>
+                Hi! This is the qualification for the Jade: Financial Prompts project! Here, you’ll upload financial filings and ask questions about them based on 3 question criteria. If your submission is successful, you will be let on to the Jade project, which has a pay rate of $35/hr! 😊
+            </p>
+            <p>
+                If you do not have a background working with financial data, please skip this qualification! We are only looking for people who are competent in matters related to finance. As a rule of thumb, if you've never seen or worked with income statements or balance sheets, then you’re probably out of scope for this project.
+            </p>
+            <p>
+                The main goal of this project is to use publicly available financial filings from October 2023 or after and ask questions about them. These questions will be passed into a model so that we can test its ability to retrieve relevant information from PDF sources (that you will also provide).
+            </p>
+            <p>
+                <strong style="color: red;">Note: Please DO NOT include any PII anywhere in your submission.</strong>
+            </p>
+            <p>
+                The project instructions are as follows, please read them carefully before attempting the task below.
+            </p>
+            <h2 style="text-decoration: underline;">Qualification Instructions</h2>
+            <details>
+                <summary>Part 1: Finding Reports</summary>
+                <p>
+                    To begin, you need to locate publicly available financial filings (10-K and 10-Q only). These filings can be found on the <a href="https://www.sec.gov/search-filings" target="_blank">SEC (Securities and Exchange Commission) EDGAR website</a>.
+                </p>
+                <p>
+                    Please refer to <a href="https://docs.google.com/document/d/16Pu5MTsrqzT5nAYGsN4innXV8IlNeoXQb5QEfyBXteo/edit?tab=t.0" target="_blank">this visual guide</a> to find and download your desired reports. Optionally, you can follow these simple steps:
+                </p>
+                <ol>
+                    <li><a href="https://www.sec.gov/search-filings" target="_blank">Go to EDGAR’s Search Filings page.</a></li>
+                    <li>Search for your desired company (e.g., Apple, Nvidia, Abercrombie).</li>
+                    <li>Select either 10-K or 10-Q reports only.</li>
+                    <li>Click on the report you’d like to use.</li>
+                </ol>
+                <p>
+                    Make sure the reports you use are from or after October 2023, as specified in the project requirements.
+                </p>
+                <p>
+                    Please upload at least three financial reports. This is done to make the model have to work harder to identify where its answer lies.
+                </p>
+            </details>
+            <details>
+                <summary>Part 2: URLs and filenames </summary>
+                <p>
+                    After downloading the reports, copy the links to their HTML version and paste them into the URLs box. Please put each URL on a new line.
+                </p>
+                <p>
+                    Please also rename the PDF files to something other than the company’s code (to make it harder for the model to retrieve data).
+                </p>
+                
+            </details>
+            <details>
+                <summary>Part 3: Your Question Categories</summary>
+                <p>
+                    Now for the interesting part!
+                </p>
+                <p>
+                    After uploading your desired documents, you will need to ask two questions about only a single one of them. One category A question, another category B question.
+                </p>
+                <p>
+                    Please refer to the following matrix regularly throughout your submissions to ensure you satisfy the requirements for each category.
+                </p>
+                <p>
+                    Questions you ask should be about facts, numbers, or information that is readily available in the reports you uploaded. Please do not ask questions that require the model to make assumptions or predictions about the future, or to provide opinions or subjective analysis. The questions should be clear, concise, and specific to the information contained in the reports.
+                </p>
+                <p>
+                    Please don't limit yourself to just asking about numbers. We also encourage you to ask about lawsuits, shareholders and whatever else you can think of that is contained in your uploaded report.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Requirements</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>
+                                <ul>
+                                    <li>Simple Question</li>
+                                    <li>Ask about a single, readily available piece of information</li>
+                                    <li>Ask about a single document</li>
+                                </ul>
+                            </td>
+                            <td>"Why are Amazon stock prices so volatile?"</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>
+                                <ul>
+                                    <li>Hard questions about a single document</li>
+                                    <li>Answer may require using multiple paragraphs (2 or more)</li>
+                                    <li>Answer may require computing or calculating numbers that aren't readily available</li>
+                                </ul>
+                            </td>
+                            <td>"What was Apple's current ratio in 2024?"</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>
+                                <ul>
+                                    <li>Hard questions that require using 2, 3, or more (up to 40) reports</li>
+                                    <li>Answer may require making multiple calculations</li>
+                                    <li>Answer may require pulling data from multiple paragraphs in multiple reports</li>
+                                </ul>
+                            </td>
+                            <td>"What was the total net sales for Apple, Nvidia, and Tesla in the last quarter of 2024?"</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <details>
+                    <summary>Category A: Simple Questions</summary>
+                    <p>
+                        This is the simplest category of the three. When writing up a Category A question, it should be simple, and ask about a single piece of information that is readily available in a single document. The following is an exhaustive list of examples as well as justifications for why the questions given would be classified under Category A.
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Example</th>
+                                <th>Justification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>What was Amazon’s net sales in North America in 2024?</td>
+                                <td>
+                                    <ul>
+                                        <li>Simple Question</li>
+                                        <li>Asks for one readily available number</li>
+                                        <li>Asks about a single document</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>How many NVIDIA shares were purchased in the third quarter of 2024?</td>
+                                <td>
+                                    <ul>
+                                        <li>Simple questions and time-bound</li>
+                                        <li>Asks for a number that’s readily available in the report</li>
+                                        <li>Question is about a single report (NVIDIA)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Who is Anthropologie tailored to?</td>
+                                <td>
+                                    <ul>
+                                        <li>Simple question</li>
+                                        <li>Readily available and simple answer</li>
+                                        <li>Asks only about one report (UO)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        As mentioned before, please only ask simple questions about a single document in this category.
+                    </p>
+                    </details>
+                    <details>
+                        <summary>Category B: Hard Questions About a Single Document</summary>
+                        <p>
+                            In this category, we want you to ask more difficult questions than Category A, but still about only one report. For a question to fall under this category, it must either:
+                        </p>
+                        <ul>
+                            <li>Require information from multiple paragraphs</li>
+                            <li>Require calculation of a number/information that isn’t already available in the report</li>
+                            <li>Or both!</li>
+                        </ul>
+                        <p>
+                            For questions that require answers from separate paragraphs, this can be done by either stacking multiple questions on top of each other, or by asking a singular question that requires an elaborate response from multiple separate paragraphs.
+                        </p>
+                        <p>
+                            We understand stacking simple questions on top of each other is easier, but the time spent on the project is paid either way. The time you take to think of a high-quality and difficult prompt will not only put you ahead of others for future finance projects, but will be worthwhile and pay more as we’ll be looking for workers with a good level of creativity!
+                        </p>
+                        <p>The following are some examples and their justifications for both types of Category B questions:</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Example</th>
+                                    <th>Justification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>What was Amazon’s net sales in North America in 2024? Also, how much free cash flow did they have towards the end of the year?</td>
+                                    <td>
+                                        <ul>
+                                            <li>Stacking of questions</li>
+                                            <li>Stacked questions</li>
+                                            <li>Different parts of the report</li>
+                                            <li>Asks about a single document</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>What percentage of Apple’s sales revenue in 2024 was from their products?</td>
+                                    <td>
+                                        <ul>
+                                            <li>Computation of numbers</li>
+                                            <li>Question that requires computation using the data available</li>
+                                            <li>Asks about a single document (since it’s annual it’s Apple 10-K)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>What was the current ratio (current liabilities : current assets) for Apple in 2024? And what percentage of the total revenue was from their services?</td>
+                                    <td>
+                                        <ul>
+                                            <li>Both computation and stacking of questions</li>
+                                            <li>Requires multiple computations using the available data</li>
+                                            <li>Stacking of two difficult questions</li>
+                                            <li>Asks only about one report</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            Category B questions should challenge the model to perform deeper analysis while staying within the scope of a single document.
+                        </p>
+                        </details>
+                        <details>
+                            <summary>Category C: Hard Questions About Multiple Documents</summary>
+                            <p>
+                                This category is out of scope for this qual. However, it would be useful to read it so that you’re better prepared for if you’re let on to the main project!
+                            <p>
+                                We finally move on to Category C. In this category, you should be asking difficult questions about multiple documents. We recommend that you upload multiple reports in Categories A and B to make the model have to choose which one to use to answer your questions. For Category C, we want you to do the same but multiple times. For example, you can upload multiple reports from Apple (e.g., 2024 10-K, 2024 10-Q, and 2023 10-K), and do the same for other companies as well in the same submission.
+                            </p>
+                            <p>
+                                We ask that you upload a minimum of three documents for this category, but the more you upload, the better! Anywhere from 2 to 40 is allowed. We recommend 30% of Category C submissions to be 2-10, and 70% to be 10+ documents uploaded. We will be regularly checking your submissions and the ratios of how often you upload more than 10 reports, so please follow this rule closely. It would make sense to upload reports of companies in the same sector, so you could perhaps ask general questions about that industry for a given time period (e.g., "What was the sum of the net profit for Apple and Nvidia in 2024?").
+                            </p>
+                            <p>
+                                You will need to ask hard questions that require using information from 2, 3, or more reports (up to 40). This can also be done by the same means used in Category B, by either stacking questions on top of each other or by asking difficult questions. The following are some examples of questions in both categories.
+                            </p>
+                            <p>
+                                For questions that require answers from separate paragraphs, this can be done by either stacking multiple questions on top of each other, or by asking a singular question that requires an elaborate response from multiple separate paragraphs. Please keep the distribution for that 30-70 respectively. I.e., 70% of your Category B submissions should be asking the difficult questions, and 30% stacking questions on top of each other.
+                            </p>
+                            <p>
+                                We understand stacking simple questions on top of each other is easier, but the time spent on the project is paid either way. The time you take to think of a high-quality and difficult prompt will not only put you ahead of others for future finance projects, but will be worthwhile and pay more!
+                            </p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Example</th>
+                                        <th>Justification</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Give me a comparison between the sales growth rate of Amazon and Ebay in 2024 compared to the previous year.</td>
+                                        <td>
+                                            <ul>
+                                                <li>Requires multiple computations from different reports</li>
+                                                <li>Difficult question that requires multiple computations</li>
+                                                <li>Question about multiple reports</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Compare between the returns on marketing investments for Apple, Amazon, and Alphabet in 2024.</td>
+                                        <td>
+                                            <ul>
+                                                <li>Computation of numbers</li>
+                                                <li>Question that requires computation using the data available</li>
+                                                <li>Asks about multiple reports</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </details>
+                    </details>
+                </details>
+            </details>
+            <details>
+                <summary>Part 4: Providing Answers</summary>
+                <p>After you ask your questions, you should then provide answers to each of the questions you asked. This answer will be used by raters as a reference to ensure the model’s answers contain the key information you’re looking for. Therefore, to make the rater's lives easier, your answers should be concise and structured. They should have the following structure, depending on how many questions you asked. 
+                    Depending on the category you selected, the answers will be dynamically structured as follows:   
+                </p>
+                <details>
+                    <summary>Category A</summary>
+                    <p>For Category A, since you are asking a single, simple question, your answer should be concise and directly address the question. Use the following structure:</p>
+                    <ul>
+                    <li><b>Document:</b></li>
+      
+                    <ul>
+                        <li><b>10-K:</b> &lt;company name&gt; 10-K &lt;year&gt;</li>
+                        <ul>
+                          <li>Example: Amazon 10-K 2024</li>
+                        </ul>
+                        <li><b>10-Q:</b> &lt;company name&gt; 10-Q &lt;quarter&gt; &lt;year&gt;</li>
+                        <ul>
+                          <li>Example: Nvidia 10-Q Q2 2024</li>
+                        </ul>
+                    </ul>
+                    <li><b>Page:</b> Single number of the page where the answer is found.</li>
+                    <ul>
+                      <li>Example: 23</li>
+                    </ul>
+                    <li><b>Final Answer:</b> This needs to be straight to the point (one short sentence). Think of the most concise way to present the expected answer.</li>
+                    <ul>
+                      <li>Example: </li>
+                      <ul>
+                        <li>Question: Why did Epic Games file a lawsuit against apple?</li>
+                        <li>Final Answer: They alleged violations of federal and antitrust laws based on how they operate their App Store.</li>
+                      </ul>
+                      </ul>
+                    </ul>
+                    <u style="font-size: larger;">Example Submission</u>
+                    <li><b>Question:</b> What was Nvidia's gross profit in 2023?</li>
+                    <li><b>Document: </b>Nvidia 10-K 2023</li>
+                    <li><b>Page: </b>50</li>
+                    <li><b>Final Answer: </b>$15,356 million</li>
+                    </ul>
+                </details>
+                <div style="margin-bottom: 1rem;"></div>
+                <details>
+                    <summary>Category B</summary>
+                    <p>Category B is going to be slightly similar to A, with the difference being the option to add multiple pages in the pages section if required. This will also include a 'Calculation' section in case the question requires it.</p>
+                    <ul>
+                    <li><b>Document:</b> &lt;company name&gt 10-K/Q</li>
+                    <ul>
+                        <li>Example: Nvidia 10-Q</li>
+                    </ul>
+                    <li><b>Page(s):</b> If multiple, separate by a comma and a space.</li>
+                    <ul>
+                        <li>Example: 23, 27</li>
+                    </ul>
+                    <li><b>Calculation:</b> This is optional to fill in and dependent on your question. If your question doesn't require any calculations, keep this as N/A. The first line should be how the value is calculated, the second line should be the calculation itself.</li>
+                    <ul>
+                        <li>Example:</li>
+                        <ul>
+                            <li><b>Question: </b>What was Nvidia's current ratio in 2023?</li>
+                            <li><b>Calculation: </b></li>
+                            <p>Equation: Assets / Current Liabilities</p> 
+                            <p>44,345 / 10,631</p>
+                        </ul>
+                    </ul>
+                    <li><b>Final Answer:</b> This needs to be straight to the point (a short sentence for each point asked about at most). Think of the most concise way to present the expected answer.</li>
+                    <ul>
+                        <li>Example:</li>
+                        <ul>
+                            <li><b>Question: </b>What was Amazon's net sales compared to its assets in 2024?</li>
+                            <li><b>Final Answer: </b></li>
+                            <p>Net sales: $637,959 million</p>
+                            <p>Total assets: $624,894 million</p>
+                        </ul>
+                    </ul>
+                </ul>
+                <u style="font-size: larger;">Example Submission</u>
+                <li><b>Question:</b> What was Amazon's working capital in 2024?</li>
+                <li><b>Document: </b>Amazon 10-K</li>
+                <li><b>Page(s): </b>39</li>
+                <li><b>Calculation: </b></li>
+                <p>Equation: current assets - current liabilities</p>
+                <p>190,867 - 179,431</p>
+                <li><b>Final Answer: </b>$11,436 million</li>
+                </details>
+                <div style="margin-bottom: 1rem;"></div>
+                <details>
+                    <summary>Category C</summary>
+                    <p>Because this is the highest difficulty category, we ask that you upload at least 2 times the number of reports that you're going to ask questions about. So, if you ask a question that requires using information from 3 reports, please upload at least 6 reports. This is done to stress test the model and make sure that it can correctly select the reports the question is referring to.</p>
+                    <ul>
+                        <li><b>Documents: Each document should be given a new line</b></li>
+                        <ul>
+                            <li><b>10-K:</b> &lt;company name&gt; 10-K &lt;year&gt;</li>
+                            <ul>
+                              <li>Example: Amazon 10-K 2024</li>
+                            </ul>
+                            <li><b>10-Q:</b> &lt;company name&gt; 10-Q &lt;quarter&gt; &lt;year&gt;</li>
+                              <li>Example:</li>
+                              <p>Nvidia 10-Q Q2 2024</p>
+                              <p>Apple 10-Q Q2 2024</p>
+                              <p>Amazon 10-K 2024</p>
+                        </ul>
+                    <li><b>Pages: </b>&lt;document&gt; : Pages &lt;page number(s)&gt;</li>
+                    <ul>
+                        <li>Example:</li>
+                        <p>Nvidia 10-Q Q2 2024 : Pages 23, 27</p>
+                        <p>Apple 10-Q Q2 2024 : Pages 12, 15</p>
+                        <p>Amazon 10-K 2024 : Pages 39, 45</p>
+                    </ul>
+                    <li><b>Calculation(s):</b> This is optional to fill in and dependent on your question. Only include the reports that require calculations. Note: if you're making calculations for the same company but different reports, mention the full report name when showing the calculation instead of just the company name. Please also separate the equation from the calculations as shown below:</li>
+                    <ul>
+                        <li><b>Example:</b></li>
+                        <ul>
+                            <li><b>Question:</b> What was Nvidia's current ratio in 2023 compared to Apple's?</li>
+                            <li><b>Calculation:</b></li>
+                            <ul>
+                                <p>Equation: Current Assets / Current Liabilities</p>
+                                <p>Nvidia 10-K 2023: 44,345 / 10,631</p>
+                                <p>Apple 10-K 2023: 152,987 / 176,392</p>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <ul>
+                        <li>Example:</li>
+                        <ul>
+                            <li><b>Question: </b>What was Nvidia's current ratio in 2023 compared to Apple's?</li>
+                            <li><b>Calculation: </b></li>
+                            <p>Equation: Current Assets / Current Liabilities</p>
+                            <p>Nvidia: 44,345 / 10,631</p>
+                            <p>Apple: 152,987 / 176,392</p>
+                        </ul>
+                    </ul>
+                    <li><b>Final Answer:</b> This needs to be straight to the point (a short sentence for each point asked about at most). Think of the most concise way to present the expected answer.</li>
+                    <ul>
+                        <li>Example:</li>
+                        <ul>
+                            <li><b>Question: </b>How much were Amazon's assets compared to Apple and Nvidia in 2024?</li>
+                            <li><b>Final Answer: </b></li>
+                            <p>Amazon assets: $624,894 million</p>
+                            <p>Apple assets: $364,980 million</p>
+                            <p>Nvidia assets: $65,728 million</p>
+                        </ul>
+                    </ul>
+                </ul>
+                <u style="font-size: larger;">Example Submission</u>
+                <li><b>Question:</b> Compare between Amazon, Nvidia, and Apple's working capital in 2024</li>
+                <li><b>Documents: </b></li>
+                <p>Amazon 10-K 2-24</p>
+                <p>Nvidia 10-K 2024</p>
+                <p>Apple 10-K 2024</p>
+                <li><b>Pages: </b></li>
+                <p>Nvidia 10-Q Q2 2024 : Pages 23, 27</p>
+                <p>Apple 10-Q Q2 2024 : Pages 12, 15</p>
+                <p>Amazon 10-K 2024 : Pages 39, 45</p>
+                <li><b>Calculations: </b></li>
+                <p>Equation: Working capital = current assets - current liabilities</p>
+                <p>Nvidia: 44,345 - 10,631</p>
+                <p>Apple: 152,987 - 176,392</p>
+                <p>Amazon: 190,867 - 179,431</p>
+                <li><b>Final Answer: </b></li>
+                <p>Amazon working capital: $11,436 million</p>
+                <p>Nvidia working capital: $33,714 million</p>
+                <p>Apple working capital: -$23,405 million</p>
+                </details>
+              </details>
+            </details>
+        </div>
+        <div class="content">
+            <h2>Submit Your Task</h2>
+            <form id="upload-form" enctype="multipart/form-data" style="margin-bottom: 2rem;">
+                <label for="report-upload">Report Upload:</label><br>
+                <input type="file" id="report-upload" name="report_upload" accept="application/pdf" style="margin-bottom: 1rem;"><br>
+                <button type="button" id="upload-button" style="padding: 0.5rem 1rem; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">Upload</button>
+            </form>
+
+            <script>
+                document.getElementById('upload-button').addEventListener('click', async () => {
+                    const uploadInput = document.getElementById('report-upload');
+                    const file = uploadInput.files[0];
+
+                    if (!file) {
+                        alert('Please select a PDF file to upload.');
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('report_upload', file);
+
+                    try {
+                        const response = await fetch('http://127.0.0.1:5000/upload-report', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        console.log('Upload Response:', result);
+                        alert('File uploaded successfully!');
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert(`Failed to upload the file: ${error.message}`);
+                    }
+                });
+
+                document.getElementById('submit-button').addEventListener('click', async () => {
+                    const form = document.getElementById('qualification-form');
+                    const formData = new FormData(form);
+
+                    const data = {
+                        urls: formData.get('report_urls'),
+                        questions: [
+                            {
+                                category: 'A',
+                                question: formData.get('question_a'),
+                                answer: {
+                                    documents: formData.get('documents'),
+                                    pages: formData.get('answer_pages_a'),
+                                    final_answer: formData.get('final_answer_a')
+                                }
+                            },
+                            {
+                                category: 'B',
+                                question: formData.get('question_b'),
+                                answer: {
+                                    documents: formData.get('documents'),
+                                    pages: formData.get('answer_pages_b'),
+                                    calculations: formData.get('answer_calculations'),
+                                    final_answer: formData.get('final_answer_b')
+                                }
+                            }
+                        ]
+                    };
+
+                    try {
+                        const response = await fetch('http://127.0.0.1:5000/validate-answer', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                "Access-Control-Allow-Origin": "*",
+                                "Access-Control-Allow-Methods": "POST",
+                                "Access-Control-Allow-Headers": "Content-Type, Authorization"
+                            },
+                            body: JSON.stringify(data)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        console.log('Validation Response:', result);
+                        alert('Validation completed. Check console for details.');
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Failed to validate the submission. Please ensure the server is running and the endpoint exists.');
+                    }
+                });
+            </script>
+            <form id="qualification-form">
+                <label for="url">Report URL(s):</label><br>
+                <input type="text" id="url" name="report_urls" style="width: 100%; height: 4rem; margin-bottom: 1rem;"><br>
+
+                <label for="question-a">Question - Category A:</label><br>
+                <textarea id="question-a" name="question_a" style="width: 100%; height: 4rem; margin-bottom: 1rem;"></textarea><br>
+
+                <label for="question-b">Question - Category B:</label><br>
+                <textarea id="question-b" name="question_b" style="width: 100%; height: 4rem; margin-bottom: 1rem;"></textarea><br>
+                
+                <label for="documents">Document(s):</label><br>
+                <textarea id="documents" name="documents" style="width: 100%; height: 4rem; margin-bottom: 1rem;"></textarea><br>
+
+                <label for="answer-pages-a">Answer - Category A: Page(s):</label><br>
+                <textarea id="answer-pages-a" name="answer_pages_a" style="width: 100%; height: 4rem; margin-bottom: 1rem;"></textarea><br>
+
+                <label for="answer-pages-b">Answer - Question B: Page(s):</label><br>
+                <textarea id="answer-pages-b" name="answer_pages_b" style="width: 100%; height: 4rem; margin-bottom: 1rem;"></textarea><br>
+                
+                <label for="answer-calculations">Answer - Question B: Calculation(s):</label><br>
+                <textarea id="answer-calculations" name="answer_calculations" style="width: 100%; height: 4rem; margin-bottom: 1rem;"></textarea><br>
+
+                <label for="final-answer-a">Final Answer - Question A:</label><br>
+                <textarea id="final-answer-a" name="final_answer_a" style="width: 100%; height: 2rem; margin-bottom: 1rem;"></textarea><br>
+
+                <label for="final-answer-b">Final Answer - Question B:</label><br>
+                <textarea id="final-answer-b" name="final_answer_b" style="width: 100%; height: 2rem; margin-bottom: 1rem;"></textarea><br>
+                
+                <button type="button" id="submit-button" style="padding: 0.5rem 1rem; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

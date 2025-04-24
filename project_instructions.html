@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jade: Project Instructions</title>
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .split {
+      height: 100%;
+      overflow: auto;
+    }
+
+    .left {
+      width: 50%;
+      overflow: auto;
+      border-right: 2px solid #ccc;
+    }
+
+    .right {
+      flex-grow: 1;
+      overflow: auto;
+    }
+
+    .resizer {
+      width: 5px;
+      background-color: #ccc;
+      cursor: ew-resize;
+      height: 100%;
+    }
+
+    .instructions {
+      margin: 2rem;
+    }
+
+    h1 {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    details {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    summary {
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+    }
+
+    summary::-webkit-details-marker {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="split left">
+    <div class="instructions">
+      <h1>Jade: Financial Prompts</h1>
+      <p>Please note this is a pilot project, if you have any suggestions for improvement please leave them in the comments section.</p>
+      <section>
+        <details open>
+          <summary>Overview</summary>
+          <p>
+            <strong style="color: red;">Note: Please DO NOT include any PII anywhere in your submission.</strong>
+          </p>
+          <p>
+            <strong style="color: red;">Latest: For this version, please only focus on uploading category A questions.</strong>
+          </p>
+          <p>In this project you will be doing the following:</p>
+          <ol>
+            <li>Finding quarterly or annual financial filings for a company from the EDGAR database, which is part of SEC (Securities and Exchange Commission).</li>
+            <li>Downloading these reports locally and uploading them onto your task.</li>
+            <li>Asking questions that fall under category A, B, or C.</li>
+            <li>Providing concise and informative answers for those questions, containing the information you would expect the model to return.</li>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://www.sec.gov/edgar/searchedgar/companysearch.html" target="_blank">EDGAR Company Search</a></li>
+            <li><a href="https://docs.google.com/document/u/0/d/16Pu5MTsrqzT5nAYGsN4innXV8IlNeoXQb5QEfyBXteo/edit" target="_blank">Finding Reports: Visual Guide</a></li>
+          </ul>
+          </ol>
+        </details>
+      </section>
+      <section>
+        <details>
+          <summary>Step 1 - Finding the reports</summary>
+          <p>Please refer to this <a href="https://docs.google.com/document/u/0/d/16Pu5MTsrqzT5nAYGsN4innXV8IlNeoXQb5QEfyBXteo/edit" target="_blank">visual guide</a> to find and download your desired reports. Optionally, you can follow these simple steps:</p>
+          <ol>
+            <li>Go to <a href="https://www.sec.gov/search-filings" target="_blank">EDGAR’s Search Filings page</a>.</li>
+            <li>Search for your desired company (e.g., Apple, Nvidia, Abercrombie). Note: You cannot use the same company in more than one submission, please stick to this 🙂.</li>
+            <li>Select either 10-K or 10-Q reports.</li>
+            <li>Click on the report you’d like to use.</li>
+          </ol>
+        </details>
+      </section>
+      <section>
+        <details>
+          <summary>Step 2 - Downloading and Uploading to Task</summary>
+          <p>After finding your desired report and landing on the report page, do the following (also shown in the <a href="https://docs.google.com/document/u/0/d/16Pu5MTsrqzT5nAYGsN4innXV8IlNeoXQb5QEfyBXteo/edit" target="_blank">visual guide</a>):</p>
+          <p>
+            After downloading the reports, copy the links to their HTML version and paste them into the URLs box. Please put each URL on a new line.
+            Please also rename the PDF files to something other than the company’s code (to make it harder for the model to retrieve data)
+          </p>
+          <p>
+            Note: Please do not move or rename the files after uploading them. You won't be able to submit if you do so.
+        </details>
+      </section>
+      <section>
+        <details>
+          <summary>Step 3 - Asking questions & Question Categories</summary>
+          <p>Now for the interesting part!</p>
+          <p>
+            After uploading your desired documents, you should select a category for the question on the right-hand side of the page. This category can be A, B, or C. 
+          </p>
+          <p>
+            Please refer to the following matrix regularly throughout your submissions to ensure you stay aligned with them.
+          </p>
+          <p>
+            Questions you ask should be about facts, numbers, or information that is readily available in the reports you uploaded. Please do not ask questions that require the model to make assumptions or predictions about the future, or to provide opinions or subjective analysis. The questions should be clear, concise, and specific to the information contained in the reports.
+          </p>
+          <p>
+            Please don't limit yourself to just asking about numbers. We also encourage you to ask about lawsuits, shareholders and whatever else you can think of that is contained in your uploaded reports.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Requirements</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A</td>
+                <td>
+              <ul>
+                <li>Simple Question</li>
+                <li>Ask about a single, readily available piece of information</li>
+                <li>Ask about a single document</li>
+              </ul>
+                </td>
+                <td>"Why are Amazon stock prices so volatile?"</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>
+              <ul>
+                <li>Hard questions about a single document</li>
+                <li>Answer may require using multiple paragraphs (2 or more)</li>
+                <li>Answer may require computing or calculating numbers that aren't readily available</li>
+              </ul>
+                </td>
+                <td>"What was Apple's current ratio in 2024?"</td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td>
+              <ul>
+                <li>Hard questions that require using 2, 3, or more (up to 40) reports</li>
+                <li>Answer may require making multiple calculations</li>
+                <li>Answer may require pulling data from multiple paragraphs in multiple reports</li>
+              </ul>
+                </td>
+                <td>"What was the total net sales for Apple, Nvidia, and Tesla in the last quarter of 2024?"</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top: 1rem;"></div>
+          <details>
+            <summary>Category A</summary>
+            <p>This is the simplest category of the three. When writing up a Category A question, it should be simple, ask about a single piece of information that is readily available in a single document. However, you are advised to upload more than just the report you’re going to ask a question about. This forces the model to have to find which report to look for the information in, which is exactly what we want. For example, if you’re going to ask a category A question about Amazon’s 10-Q report, you should also upload others alongside it with other companies (e.g. Nvidia, Apple, Meta, Urban Outfitters, Zara etc.). The following is an exhaustive list of examples as well as justifications for why they would be classified under Category A.</p>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Example</th>
+                      <th>Justification</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>What was Amazon’s net sales in North America in 2024?</td>
+                      <td>
+                          <ul>
+                              <li>Simple Question</li>
+                              <li>Asks for one readily available number</li>
+                              <li>Asks about a single document</li>
+                          </ul>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>How many NVIDIA shares were purchased in the third quarter of 2024?</td>
+                      <td>
+                          <ul>
+                              <li>Simple questions and time-bound</li>
+                              <li>Asks for a number that’s readily available in the report</li>
+                              <li>Question is about a single report (NVIDIA)</li>
+                          </ul>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Who is Anthropologie tailored to?</td>
+                      <td>
+                          <ul>
+                              <li>Simple question</li>
+                              <li>Readily available and simple answer</li>
+                              <li>Asks only about one report (UO)</li>
+                          </ul>
+                      </td>
+                  </tr>
+              </tbody>
+              <tfoot>
+                  </tfoot>
+              </table>
+              <p>As mentioned before, please only ask simple questions about a single document in this category.</p>
+              </tfoot>
+              </tbody>
+            </table>
+          </details>
+          <div style="margin-top: 1rem;"></div>
+          <details>
+            <summary>Category B</summary>
+          <p>
+              In this category, we want you to ask more difficult questions than Category A, but still about only one report. For a question to fall under this category, it must either:
+          </p>
+          <ul>
+              <li>Require information from multiple paragraphs</li>
+              <li>Require calculation of a number/information that isn’t already available in the report</li>
+              <li>Or both!</li>
+          </ul>
+          <p>
+              For questions that require answers from separate paragraphs, this can be done by either stacking multiple questions on top of each other, or by asking a singular question that requires an elaborate response from multiple separate paragraphs. Please keep the distribution for that 30-70 respectively. I.e., 70% of your Category B submissions should be asking the difficult questions, and 30% stacking questions on top of each other.
+          </p>
+          <p>
+              We understand stacking simple questions on top of each other is easier, but the time spent on the project is paid either way. The time you take to think of a high-quality and difficult prompt will not only put you ahead of others for future finance projects, but will be worthwhile and pay more!
+          </p>
+          <p>
+              The following are some examples and their justifications for both types of Category B questions:
+          </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Example</th>
+                  <th>Justification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>What was Amazon’s net sales in North America in 2024? Also, how much free cash flow did they have towards the end of the year?</td>
+                  <td>
+                    <ul>
+                      <li>Stacking of questions</li>
+                      <li>Stacked questions</li>
+                      <li>Different parts of the report</li>
+                      <li>Asks about a single document</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>What percentage of Apple’s sales revenue in 2024 was from their products?</td>
+                  <td>
+                    <ul>
+                      <li>Computation of numbers</li>
+                      <li>Question that requires computation using the data available</li>
+                      <li>Asks about a single document (since it’s annual it’s Apple 10-K)</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>What was the current ratio (current liabilities : current assets) for Apple in 2024? And what percentage of the total revenue was from their services?</td>
+                  <td>
+                    <ul>
+                      <li>Both computation and stacking of questions</li>
+                      <li>Requires multiple computations using the available data</li>
+                      <li>Stacking of two difficult questions</li>
+                      <li>Asks only about one report</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Category B questions should challenge the model to perform deeper analysis while staying within the scope of a single document.</p>
+          </details>
+          </table>
+          <div style="margin-top: 1rem;"></div>
+          <details>
+            <summary>Category C</summary>
+          <p>
+              We finally move on to Category C. In this category, you should be asking difficult questions about multiple documents. We recommend that you upload multiple reports in Categories A and B to make the model have to choose which one to use to answer your questions. For Category C, we want you to do the same but multiple times. For example, you can upload multiple reports from Apple (e.g., 2024 10-K, 2024 10-Q, and 2023 10-K), and do the same for other companies as well in the same submission.
+          </p>
+          <p>
+              We ask that you upload a minimum of three documents for this category, but the more you upload, the better! Anywhere from 2 to 40 is allowed. <b><u>We recommend 30% of Category C submissions to be 2-10, and 70% to be 10+ documents uploaded.</u></b> We will be regularly checking your submissions and the ratios of how often you upload more than 10 reports, so please follow this rule closely. It would make sense to upload reports of companies in the same sector, so you could perhaps ask general questions about that industry for a given time period (e.g., "What was the sum of the net profit for Apple and Nvidia in 2024?").
+          </p>
+          <p>
+              You will need to ask hard questions that require using information from 2, 3, or more reports (up to 40). This can also be done by the same means used in Category B, by either stacking questions on top of each other or by asking difficult questions. The following are some examples of questions in both categories.
+          </p>
+          <p>
+              For questions that require answers from separate paragraphs, this can be done by either stacking multiple questions on top of each other, or by asking a singular question that requires an elaborate response from multiple separate paragraphs. Please keep the distribution for that 30-70 respectively. I.e., 70% of your Category B submissions should be asking the difficult questions, and 30% stacking questions on top of each other.
+          </p>
+          <p>
+              We understand stacking simple questions on top of each other is easier, but the time spent on the project is paid either way. The time you take to think of a high-quality and difficult prompt will not only put you ahead of others for future finance projects, but will be worthwhile and pay more!
+          </p>
+          <p>
+              The following are some examples and their justifications for both types of Category B questions:
+          </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Example</th>
+                  <th>Justification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Give me a comparison between the sales growth rate of Amazon and Ebay in 2024 compared to the previous year.</td>
+                  <td>
+                    <ul>
+                      <li>Requires multiple computations from different reports</li>
+                      <li>Difficult question that requires multiple computations</li>
+                      <li>Question about multiple reports</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Compare between the returns on marketing investments for Apple, Amazon, and Alphabet in 2024.</td>
+                  <td>
+                    <ul>
+                      <li>Computation of numbers</li>
+                      <li>Question that requires computation using the data available</li>
+                      <li>Asks about a single document (since it’s annual it’s Apple 10-K)</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+          </table>
+          </details>
+          </details>
+          
+        </details>
+      </section>
+      </section>
+      <section>
+        <details>
+          <summary>Step 4 - Providing answers to these questions</summary>
+          <p>After you ask your questions, you should then provide answers to each of the questions you asked. This answer will be used by raters as a reference to ensure the model’s answers contain the key information you’re looking for. Therefore, to make the rater's lives easier, your answers should be concise and structured. They should have the following structure, depending on how many questions you asked. 
+              Depending on the category you selected, the answers will be dynamically structured as follows:   
+          </p>
+          <details>
+              <summary>Category A</summary>
+              <p>For Category A, since you are asking a single, simple question, your answer should be concise and directly address the question. Use the following structure:</p>
+              <ul>
+              <li><b>Document:</b></li>
+
+              <ul>
+                  <li><b>10-K:</b> &lt;company name&gt; 10-K &lt;year&gt;</li>
+                  <ul>
+                    <li>Example: Amazon 10-K 2024</li>
+                  </ul>
+                  <li><b>10-Q:</b> &lt;company name&gt; 10-Q &lt;quarter&gt; &lt;year&gt;</li>
+                  <ul>
+                    <li>Example: Nvidia 10-Q Q2 2024</li>
+                  </ul>
+              </ul>
+              <li><b>Page:</b> Single number of the page where the answer is found.</li>
+              <ul>
+                <li>Example: 23</li>
+              </ul>
+              <li><b>Final Answer:</b> This needs to be straight to the point (one short sentence). Think of the most concise way to present the expected answer.</li>
+              <ul>
+                <li>Example: </li>
+                <ul>
+                  <li>Question: Why did Epic Games file a lawsuit against apple?</li>
+                  <li>Final Answer: They alleged violations of federal and antitrust laws based on how they operate their App Store.</li>
+                </ul>
+                </ul>
+              </ul>
+              <u style="font-size: larger;">Example Submission</u>
+              <li><b>Question:</b> What was Nvidia's gross profit in 2023?</li>
+              <li><b>Document: </b>Nvidia 10-K 2023</li>
+              <li><b>Page: </b>50</li>
+              <li><b>Final Answer: </b>$15,356 million</li>
+              </ul>
+          </details>
+          <div style="margin-bottom: 1rem;"></div>
+          <details>
+              <summary>Category B</summary>
+              <p>Category B is going to be slightly similar to A, with the difference being the option to add multiple pages in the pages section if required. This will also include a 'Calculation' section in case the question requires it.</p>
+              <ul>
+              <li><b>Document:</b> &lt;company name&gt 10-K/Q</li>
+              <ul>
+                  <li>Example: Nvidia 10-Q</li>
+              </ul>
+              <li><b>Page(s):</b> If multiple, separate by a comma and a space.</li>
+              <ul>
+                  <li>Example: 23, 27</li>
+              </ul>
+              <li><b>Calculation:</b> This is optional to fill in and dependent on your question. If your question doesn't require any calculations, keep this as N/A. The first line should be how the value is calculated, the second line should be the calculation itself.</li>
+              <ul>
+                  <li>Example:</li>
+                  <ul>
+                      <li><b>Question: </b>What was Nvidia's current ratio in 2023?</li>
+                      <li><b>Calculation: </b></li>
+                      <p>Assets / Current Liabilities</p> 
+                      <p>44,345 / 10,631</p>
+                  </ul>
+              </ul>
+              <li><b>Final Answer:</b> This needs to be straight to the point (a short sentence for each point asked about at most). Think of the most concise way to present the expected answer.</li>
+              <ul>
+                  <li>Example:</li>
+                  <ul>
+                      <li><b>Question: </b>What was Amazon's net sales compared to its assets in 2024?</li>
+                      <li><b>Final Answer: </b></li>
+                      <p>Net sales: $637,959 million</p>
+                      <p>Total assets: $624,894 million</p>
+                  </ul>
+              </ul>
+          </ul>
+          <u style="font-size: larger;">Example Submission</u>
+          <li><b>Question:</b> What was Amazon's working capital in 2024?</li>
+          <li><b>Document: </b>Amazon 10-K</li>
+          <li><b>Page(s): </b>39</li>
+          <li><b>Calculation: </b>190,867 - 179,431</li>
+          <li><b>Final Answer: </b>$11,436 million</li>
+          </details>
+          <div style="margin-bottom: 1rem;"></div>
+          <details>
+              <summary>Category C</summary>
+              <p>Because this is the highest difficulty category, we ask that you upload at least 2 times the number of reports that you're going to ask questions about. So, if you ask a question that requires using information from 3 reports, please upload at least 6 reports. This is done to stress test the model and make sure that it can correctly select the repors the question is referring to.</p>
+              <ul>
+                  <li><b>Documents: Each document should be given a new line</b></li>
+                  <ul>
+                      <li><b>10-K:</b> &lt;company name&gt; 10-K &lt;year&gt;</li>
+                      <ul>
+                        <li>Example: Amazon 10-K 2024</li>
+                      </ul>
+                      <li><b>10-Q:</b> &lt;company name&gt; 10-Q &lt;quarter&gt; &lt;year&gt;</li>
+                        <li>Example:</li>
+                        <p>Nvidia 10-Q Q2 2024</p>
+                        <p>Apple 10-Q Q2 2024</p>
+                        <p>Amazon 10-K 2024</p>
+                  </ul>
+              <li><b>Pages: </b>&lt;document&gt; : Pages &lt;page number(s)&gt;</li>
+              <ul>
+                  <li>Example:</li>
+                  <p>Nvidia 10-Q Q2 2024 : Pages 23, 27</p>
+                  <p>Apple 10-Q Q2 2024 : Pages 12, 15</p>
+                  <p>Amazon 10-K 2024 : Pages 39, 45</p>
+              </ul>
+              <li><b>Calculation(s):</b> This is optional to fill in and dependent on your question. Only include the reports that require calculations. Note: if you're making calculations for the same company but different reports, mention the full report name when showing the calculation instead of just the company name. Please also separate the equation from the calculations as shown below:</li>
+              <ul>
+                  <li><b>Example:</b></li>
+                  <ul>
+                      <li><b>Question:</b> What was Nvidia's current ratio in 2023 compared to Apple's?</li>
+                      <li><b>Calculation:</b></li>
+                      <ul>
+                          <p>Equation: Current Assets / Current Liabilities</p>
+                          <p>Nvidia 10-K 2023: 44,345 / 10,631</p>
+                          <p>Apple 10-K 2023: 152,987 / 176,392</p>
+                      </ul>
+                  </ul>
+              </ul>
+              <ul>
+                  <li>Example:</li>
+                  <ul>
+                      <li><b>Question: </b>What was Nvidia's current ratio in 2023 compared to Apple's?</li>
+                      <li><b>Calculation: </b></li>
+                      <p>Equation: Current Assets / Current Liabilities</p>
+                      <p>Nvidia: 44,345 / 10,631</p>
+                      <p>Apple: 152,987 / 176,392</p>
+                  </ul>
+              </ul>
+              <li><b>Final Answer:</b> This needs to be straight to the point (a short sentence for each point asked about at most). Think of the most concise way to present the expected answer.</li>
+              <ul>
+                  <li>Example:</li>
+                  <ul>
+                      <li><b>Question: </b>How much were Amazon's assets compared to Apple and Nvidia in 2024?</li>
+                      <li><b>Final Answer: </b></li>
+                      <p>Amazon assets: $624,894 million</p>
+                      <p>Apple assets: $364,980 million</p>
+                      <p>Nvidia assets: $65,728 million</p>
+                  </ul>
+              </ul>
+          </ul>
+          <u style="font-size: larger;">Example Submission</u>
+          <li><b>Question:</b> Compare between Amazon, Nvidia, and Apple's working capital in 2024</li>
+          <li><b>Documents: </b></li>
+          <p>Amazon 10-K 2-24</p>
+          <p>Nvidia 10-K 2024</p>
+          <p>Apple 10-K 2024</p>
+          <li><b>Pages: </b></li>
+          <p>Nvidia 10-Q Q2 2024 : Pages 23, 27</p>
+          <p>Apple 10-Q Q2 2024 : Pages 12, 15</p>
+          <p>Amazon 10-K 2024 : Pages 39, 45</p>
+          <li><b>Calculations: </b></li>
+          <p>Equation: Working capital = current assets - current liabilities</p>
+          <p>Nvidia: 44,345 - 10,631</p>
+          <p>Apple: 152,987 - 176,392</p>
+          <p>Amazon: 190,867 - 179,431</p>
+          <li><b>Final Answer: </b></li>
+          <p>Amazon working capital: $11,436 million</p>
+          <p>Nvidia working capital: $33,714 million</p>
+          <p>Apple working capital: -$23,405 million</p>
+          </details>
+        </details>
+      </section>
+      <section>
+        <details>
+          <summary>Additional Notes</summary>
+          <p>Here are some additional notes to keep in mind while working on this project:</p>
+          <ul>
+            <li>Please do not use the same document/question in different submissions.</li>
+            <li>Workers who upload many documents (more than 5) in their projects will be at the front of the queue to get access to a higher paying project in the near future</li>
+            <li>For category C, please upload many potentially relevant documents to make it difficult for the model to pick which reports to use to answer your question. This is particularly important for category C especially. Please do not use this for Category A.</li>
+            <li>If you encounter any issues or have suggestions for improvement, please leave feedback in the comments section.</li>
+            <li>Remember to save your progress frequently to avoid losing any work.</li>
+          </ul>
+        </details>
+      </section>
+    </div>
+  </div>
+  <div class="resizer" id="resizer"></div>
+<div class="split right">
+    <!-- Placeholder for the right side content -->
+    <div style="padding: 2rem; text-align: center;">
+        <h2>Confirmation</h2>
+        <label style="display: flex; flex-direction: column; align-items: center;">
+            <input type="checkbox" id="confirmCheckbox" style="margin-bottom: 1rem;">
+            I confirm I have read the project instructions
+        </label>
+    </div>
+    <div style="padding: 2rem; text-align: center;">
+        <h2>Select Question Category</h2>
+        <ul style="list-style-type: none; padding: 0; font-size: 1rem;">
+            <li style="margin-bottom: 1rem;">
+                <label style="cursor: pointer;">
+                    <input type="radio" name="category" value="A" style="margin-right: 0.5rem;" onclick="toggleAdditionalOptions(false);">
+                    Category A
+                </label>
+            </li>
+            <li style="margin-bottom: 1rem;">
+                <label style="cursor: pointer;">
+                    <input type="radio" name="category" value="B" style="margin-right: 0.5rem;" onclick="toggleAdditionalOptions(true);">
+                    Category B
+                </label>
+            </li>
+            <li>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="category" value="C" style="margin-right: 0.5rem;" onclick="toggleAdditionalOptions(true);">
+                    Category C
+                </label>
+            </li>
+        </ul>
+        <div style="margin-top: 1rem;">
+            <label for="fileUpload" style="font-size: 1.5rem; font-weight: bold;">Upload PDF files:</label>
+            <p style="color: red; font-size: 0.9rem; margin-top: 0.5rem;">Note: Change the filename to something unrelated before uploading</p>
+            <input type="file" id="fileUpload" accept=".pdf" multiple style="margin-top: 0.5rem; font-size: 1rem;">
+            <ul id="uploadedFilesList" style="margin-top: 1rem; padding: 0; list-style-type: none; font-size: 1rem; color: green;"></ul>
+        </div>
+        <div style="margin-top: 1rem;">
+            <label for="htmlUrls" style="font-size: 1rem; font-weight: bold;">URLs</label>
+            <textarea id="htmlUrls" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;" placeholder="Enter one URL per line"></textarea>
+        </div>
+        <script>
+            const fileUpload = document.getElementById('fileUpload');
+            const uploadedFilesList = document.getElementById('uploadedFilesList');
+
+            fileUpload.addEventListener('change', () => {
+                uploadedFilesList.innerHTML = ''; // Clear the list
+                const pdfFiles = Array.from(fileUpload.files).filter(file => file.type === 'application/pdf');
+
+                pdfFiles.forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = file.name;
+                    uploadedFilesList.appendChild(listItem);
+                });
+            });
+        </script>
+        <div style="margin-top: 1rem;">
+            <label for="userQuestion" style="font-size: 1rem; font-weight: bold;">Enter your question:</label>
+            <textarea id="userQuestion" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        </div>
+        <div style="margin-top: 1rem; text-align: center;">
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #555;">
+                Use this to validate if your question follows the selected category. Note: This may hallucinate, so please use your best judgement.
+                </p>
+            <button id="validateButton" style="background-color: #007BFF; color: white; padding: 0.5rem 1rem; font-size: 1rem; border: none; border-radius: 4px; cursor: pointer;">
+            Validate Question
+            </button>
+            <textarea id="answerBox" rows="4" style="width: 100%; margin-top: 1rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; background-color: #f9f9f9; color: #333; display: none;" readonly></textarea>
+            <div id="answerSection" style="margin-top: 2rem; display: none;">
+                <h3>Answer Section</h3>
+                <div id="categoryAFields" style="display: none;">
+                    <label for="documentA" style="font-weight: bold; display: block; text-align: left;">Document:</label>
+                    <input type="text" id="documentA" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+                    <label for="pageA" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Page:</label>
+                    <input type="text" id="pageA" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+                    <label for="finalAnswerA" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Final Answer:</label>
+                    <textarea id="finalAnswerA" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                </div>
+                <div id="categoryBFields" style="display: none;">
+                    <label for="documentB" style="font-weight: bold; display: block; text-align: left;">Document:</label>
+                    <input type="text" id="documentB" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+                    <label for="pagesB" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Page(s):</label>
+                    <input type="text" id="pagesB" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+                    <label for="calculationB" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Calculation:</label>
+                    <textarea id="calculationB" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    <label for="finalAnswerB" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Final Answer:</label>
+                    <textarea id="finalAnswerB" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                </div>
+                <div id="categoryCFields" style="display: none;">
+                    <label for="documentsC" style="font-weight: bold; display: block; text-align: left;">Documents:</label>
+                    <textarea id="documentsC" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    <label for="pagesC" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Pages:</label>
+                    <textarea id="pagesC" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    <label for="calculationsC" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Calculation(s):</label>
+                    <textarea id="calculationsC" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    <label for="finalAnswerC" style="font-weight: bold; margin-top: 1rem; display: block; text-align: left;">Final Answer:</label>
+                    <textarea id="finalAnswerC" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                </div>
+            </div>
+            <script>
+                document.querySelectorAll('input[name="category"]').forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        const selectedCategory = document.querySelector('input[name="category"]:checked')?.value;
+                        document.getElementById('answerSection').style.display = 'block';
+                        document.getElementById('categoryAFields').style.display = selectedCategory === 'A' ? 'block' : 'none';
+                        document.getElementById('categoryBFields').style.display = selectedCategory === 'B' ? 'block' : 'none';
+                        document.getElementById('categoryCFields').style.display = selectedCategory === 'C' ? 'block' : 'none';
+                    });
+                });
+
+                document.getElementById("validateAnswerSectionButton").addEventListener("click", async () => {
+                    const selectedCategory = document.querySelector('input[name="category"]:checked')?.value;
+
+                    if (!selectedCategory) {
+                        alert("Please select a category first.");
+                        return;
+                    }
+
+                    let answerData = {};
+                    if (selectedCategory === "A") {
+                        answerData = {
+                            document: document.getElementById("documentA").value.trim(),
+                            page: document.getElementById("pageA").value.trim(),
+                            final_answer: document.getElementById("finalAnswerA").value.trim(),
+                        };
+                    } else if (selectedCategory === "B") {
+                        answerData = {
+                            document: document.getElementById("documentB").value.trim(),
+                            pages: document.getElementById("pagesB").value.trim(),
+                            calculation: document.getElementById("calculationB").value.trim(),
+                            final_answer: document.getElementById("finalAnswerB").value.trim(),
+                        };
+                    } else if (selectedCategory === "C") {
+                        answerData = {
+                            documents: document.getElementById("documentsC").value.trim(),
+                            pages: document.getElementById("pagesC").value.trim(),
+                            calculations: document.getElementById("calculationsC").value.trim(),
+                            final_answer: document.getElementById("finalAnswerC").value.trim(),
+                        };
+                    }
+
+                    const urls = document.getElementById("htmlUrls").value.split("\n").map(url => url.trim()).filter(url => url);
+                    const question = document.getElementById("userQuestion").value.trim();
+
+                    if (!urls.length || !question || Object.values(answerData).some(value => !value)) {
+                        alert("Please fill out all required fields.");
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch("http://127.0.0.1:5000/validate-answer", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                urls: urls,
+                                category: selectedCategory,
+                                question: question,
+                                answer: answerData,
+                            }),
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`Server error: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        alert(`Validation Result: ${result.status}`);
+                    } catch (error) {
+                        alert("An error occurred while validating the answer. Check the console for details.");
+                        console.error(error);
+                    }
+                });
+            </script>
+        </div>
+        <script>
+          document.getElementById("validateButton").addEventListener("click", async () => {
+            const validateButton = document.getElementById("validateButton");
+            const userQuestion = document.getElementById("userQuestion").value;
+            const selectedCategory = document.querySelector('input[name="category"]:checked')?.value;
+            const urls = document.getElementById("htmlUrls").value.split("\n").map(url => url.trim()).filter(url => url);
+
+            // Debugging purposes
+            console.log("User Question:", userQuestion);
+            console.log("Selected Category:", selectedCategory);
+            console.log("URLs:", urls);
+            if (urls.length === 0) {
+              alert("Please enter at least one URL.");
+              return;
+            }
+
+            if (!selectedCategory) {
+              alert("Please select a category.");
+              return;
+            }
+
+            if (!userQuestion.trim()) {
+              alert("Please enter a question.");
+              return;
+            }
+
+            validateButton.textContent = "Validating ...";
+            validateButton.disabled = true;
+
+            try {
+              const response = await fetch("http://127.0.0.1:5000/validate", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    urls: urls,
+                    category: selectedCategory,
+                    question: userQuestion,
+                }),
+              });
+
+              if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+              }
+
+              const result = await response.json();
+
+              // Create or update the answer box
+              let answerBox = document.getElementById("answerBox");
+              if (!answerBox) {
+                answerBox = document.createElement("textarea");
+                answerBox.id = "answerBox";
+                answerBox.rows = 4;
+                answerBox.style.width = "100%";
+                answerBox.style.marginTop = "1rem";
+                answerBox.style.padding = "0.5rem";
+                answerBox.style.fontSize = "1rem";
+                answerBox.style.border = "1px solid #ccc";
+                answerBox.style.borderRadius = "4px";
+                answerBox.style.backgroundColor = "#f9f9f9";
+                answerBox.style.color = "#333";
+                answerBox.readOnly = true;
+                validateButton.parentElement.appendChild(answerBox);
+              }
+              answerBox.value = `${result.status}`;
+              answerBox.style.display = "block";
+            } catch (error) {
+              alert("An error occurred while validating the question. Check the console for details.");
+              console.error(error);
+            } finally {
+              validateButton.textContent = "Validate";
+              validateButton.disabled = false;
+            }
+          });
+        </script>
+    <script>
+        function toggleAdditionalOptions(show) {
+            const additionalOptions = document.getElementById('additionalOptions');
+            additionalOptions.style.display = show ? 'block' : 'none';
+        }
+    </script>
+
+  <script>
+    const resizer = document.getElementById('resizer');
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', (e) => {
+      isResizing = true;
+      document.body.style.cursor = 'ew-resize';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+      const offsetRight = document.body.offsetWidth - (e.clientX + resizer.offsetWidth / 2);
+      left.style.width = `calc(100% - ${offsetRight}px)`;
+      right.style.flexGrow = '1';
+    });
+
+    document.addEventListener('mouseup', () => {
+      isResizing = false;
+      document.body.style.cursor = 'default';
+    });
+  </script>
+  <div id="timer" style="position: fixed; bottom: 1rem; right: 1rem; width: 200px; height: 50px; background-color: #ccc; color: black; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: bold; border-radius: 4px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    Time remaining: 02:00:00
+  </div>
+  <script>
+    const timerElement = document.getElementById('timer');
+    let timeRemaining = 2 * 60 * 60; // 2 hours in seconds
+
+    function updateTimer() {
+      const hours = String(Math.floor(timeRemaining / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((timeRemaining % 3600) / 60)).padStart(2, '0');
+      const seconds = String(timeRemaining % 60).padStart(2, '0');
+      timerElement.textContent = `Time remaining: ${hours}:${minutes}:${seconds}`;
+      if (timeRemaining > 0) {
+        timeRemaining--;
+      }
+    }
+
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>

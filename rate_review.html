@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade: Rate & Review</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .split {
+            height: 100%;
+            overflow: auto;
+        }
+
+        .left {
+            width: 100%; /* Adjusted to take full width */
+            overflow: auto;
+        }
+
+        .content {
+            margin: 2rem;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        details {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+
+        summary::-webkit-details-marker {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="split left">
+        <div class="content">
+            <h1>Jade: Rate & Review</h1>
+            <p>
+                Welcome to the Jade Rate & Review project! You should have submitted at least 3 tasks to be eligible for this qualification. If you have not, please go back and submit at least 3 tasks before attempting this R&R.
+            </p>
+            <p>
+                You are given a submission from another worker for the Jade project. Please read the instructions below and rate each part accordingly.
+            </p>
+            <details>
+                <summary>URL(s)</summary>
+                <p>
+                    Ensure that the provided URLs meet the following criteria:
+                </p>
+                <ul>
+                    <li>Valid SEC EDGAR URL
+                    <li>10-K or 10-Q
+                    <li>Report is published on or after October 2023
+                </ul>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                    If any of the three criteria are not met for any of the URLs needed to answer the question, the URLs are deemed invalid.
+                </p>
+                <p>Examples:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Good Example</th>
+                            <th>Bad Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm" target="_blank">https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm</a>
+                                <ul>
+                                    <li>SEC EDGAR URL ✅
+                                    <li>10-K or 10-Q ✅
+                                    <li>Report is published on or after October 2023 ✅
+                                </ul>
+                            </td>
+                            <td>
+                                <a href="https://s2.q4cdn.com/299287126/files/doc_financials/2024/ar/Amazon-com-Inc-2023-Annual-Report.pdf" target="_blank">https://s2.q4cdn.com/299287126/files/doc_financials/2024/ar/Amazon-com-Inc-2023-Annual-Report.pdf</a>
+                                <ul>
+                                    <li>SEC EDGAR URL ❌ → It's from a different source
+                                    <li>10-K or 10-Q ❌ → It's an annual report
+                                    <li>Report is published on or after October 2023 ✅
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </details>
+            <details>
+                <summary>Questions</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>
+                                <ul>
+                                    <li>Asks about a single, readily available piece of information (no calculations or inferences required)
+                                    <li>Asks about a single document
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>
+                                <ul>
+                                    <li>Question requires calculation / inference / pulling information from multiple parts of the report
+                                    <li>Question is about a single report
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>
+                                <ul>
+                                    <li>Answer requires multiple calculations / inferring data
+                                    <li>Requires using data from 2 or more (up to 40) reports
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Good Example</th>
+                            <th>Bad Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>
+                                "What was Amazon’s net sales in North America in 2024?"
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Asks about a single, readily available piece of information (no calculations or inferences required) ✅
+                                    <li>Asks about a single document ✅
+                                </ul>
+                            </td>
+                            <td>
+                                "What was Amazon's net sales in North America in 2024 compared to Internationally?"
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Asks about a single, readily available piece of information (no calculations or inferences required) ❌ → More than one piece of information
+                                    <li>Asks about a single document ✅
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>
+                                "What was Amazon's gross margin in 2024?"
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Question requires calculation / inference / pulling information from multiple parts of the report ✅
+                                    <li>Question is about a single report ✅
+                                </ul>
+                                <span style="color: red;">Note: If this question was asked about Apple instead, this would be considered a category A question, because the gross margin is readily available in the Apple report.</span>
+                            </td>
+                            <td>
+                                "What strategies could Amazon implement to improve its market share?"
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Question requires calculation / inference / pulling information from multiple parts of the report ✅
+                                    <li>Question is about a single report ❌ → The question isn't asking about factual information that can be pulled from the report
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>
+                                "What was the working capital for Apple, Nvidia, and Tesla in the last quarter of 2024?"
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Answer requires multiple calculations / inferring data ✅
+                                    <li>Requires using data from 2 or more (up to 40) reports ✅
+                                </ul>
+                            </td>
+                            <td>
+                                "What was the total net sales for Apple, Nvidia, and Tesla in the last quarter of 2024?"
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Answer requires multiple calculations / inferring data ❌ → Net sales is readily avaiable information
+                                    <li>Requires using data from 2 or more (up to 40) reports ✅
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                    If the question does not follow the selected category, mark the Questions 'Okay' at best
+                </p>
+            </details>
+            <details>
+                <summary>Document(s)</summary>
+                <ul>
+                    <li>Only states documents used to answer the question
+                    <li><b>10-K:</b> [company name]; 10-K [year];
+                    <li><b>10-Q:</b> [company name]; 10-Q [quarter]; [year];
+                    <li>Each report on a new line
+                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Good Example</th>
+                            <th>Bad Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- Good Example -->
+                                <p></p>
+                                <p>Question: "What was the working capital for Apple, Nvidia, and Tesla in the last quarter of 2024?"</p>
+                                <p><b>Document(s):</b></p>
+                                <ul>
+                                    <p>Apple 10-Q Q4 2024</p>
+                                    <p>Nvidia 10-Q Q4 2024</p>
+                                    <p>Tesla 10-Q Q4  2024</p>
+                                    <li>Only states documents used to answer the question ✅
+                                    <li><b>10-K:</b> [company name]; 10-K [year];
+                                    <li><b>10-Q:</b> [company name]; 10-Q [quarter]; [year]; ✅ 
+                                    <li>Each report on a new line ✅ 
+                                </ul>
+                            </td>
+                            <td>
+                                <!-- Bad Example -->
+                                <p></p>
+                                <p>Question: "What was the working capital for Apple, Nvidia, and Tesla in the last quarter of 2024?"</p>
+                                <p><b>Document(s):</b></p>
+                                <ul>
+                                    <p>Apple 10-K 2024</p>
+                                    <p>Nvidia 10-Q Q4 2024</p>
+                                    <p>Tesla 10-Q Q4  2024</p>
+                                    <p>Amazon 10-Q Q4  2024</p>
+                                    <p><b>Checklist</b></p>
+                                    <li>Only states documents used to answer the question ❌ → Apple 10-K is irrelevant for the question, so is Amazon 10-Q
+                                    <li><b>10-K:</b> [company name]; 10-K [year]; ℹ️
+                                    <li><b>10-Q:</b> [company name]; 10-Q [quarter]; [year]; ✅ 
+                                    <li>Each report on a new line ✅ 
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                    If the documents can still be understood, but are not in the correct format, mark this down just slightly. 
+                </p>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                If it's incomprehensible, mark it down heavily (at least 2 levels)
+            </p>
+            </details>
+            <details>
+                <summary>Answer: Page(s)</summary>
+                <ul>
+                    <li>Only states pages required to answer the question
+                    <li><b>Category A & B:</b> Page numbers separated by a comma and a space
+                    <li><b>Category C: </b>[document]; : Pages [page number(s)];</page>
+                    <li>Each report on a new line (if multiple reports)
+                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Good Example</th>
+                            <th>Bad Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- Good Example -->
+                                <p><b>Page(s):</b></p>
+                                <ul>
+                                    <p>Nvidia 10-Q Q2 2024 : Pages 23, 27</p>
+                                    <p>Apple 10-Q Q2 2024 : Pages 12, 15</p>
+                                    <p>Amazon 10-K 2024 : Pages 39, 45</p>
+                                    <p><b>Checklist</b></p>
+                                    <ul>
+                                        <li>Only states pages required to answer the question ✅
+                                        <li><b>Category A & B:</b> Page numbers separated by a comma and a space ℹ️
+                                        <li><b>Category C: </b>[document]; : Pages [page number(s)]; ✅</page>
+                                        <li>Each report on a new line (if multiple reports) ✅
+                                    </ul>
+                                </ul>
+                            </td>
+                            <td>
+                                <!-- Bad Example -->
+                                <p><b>Page(s):</b></p>
+                                <ul>
+                                    <p>Nvidia 10-Q Q2 2024 : Pages 23, 27</p>
+                                    <p>Apple 10-Q Q2 2024 : 12, 15</p>
+                                    <p>Amazon 10-K 2024 : Pages 39, 45</p>
+                                    <p><b>Checklist</b></p>
+                                    <ul>
+                                        <li>Only states pages required to answer the question ✅
+                                        <li><b>Category A & B:</b> Page numbers separated by a comma and a space ℹ️
+                                        <li><b>Category C: </b>[document]; : Pages [page number(s)]; ❌ → Did not include 'Pages' for the second report, so incorrect format</page>
+                                        <li>Each report on a new line (if multiple reports) ✅
+                                    </ul>
+                                </ul>
+                            </td>
+                        </tr>  
+                    </tbody>
+                </table>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                    If the pages can still be understood, but are not in the correct format, mark this down just slightly. 
+                </p>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                If it's incomprehensible, mark it down heavily (at least 2 levels)
+            </p>
+            </details>
+            <details>
+                <summary>Answer: Calculation(s)</summary>
+                <ul>
+                    <li>Shows equation first
+                    <li>Report name stated before each calculation
+                    <li>Calculations are on a new line (if more than one)
+                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Good Example</th>
+                            <th>Bad Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- Good Example -->
+                                <p>Question: "What was Apple's working capital compared to Nvidia in 2024?"</p>
+                                <p><b>Calculation(s):</b></p>
+                                <ul>
+                                    <p>Equation: Current Assets - Current Liabilities</p>
+                                    <p>Apple 10-K 2024 : 152,987 - 176,392</p>
+                                    <p>Nvidia 10-K 2024 : 44,345 - 10,631</p>
+                                    <p><b>Checklist</b></p>
+                                    <ul>
+                                        <li>Shows equation first ✅
+                                        <li>Report name stated before each calculation ✅
+                                        <li>Calculations are on a new line (if more than one) ✅
+                                    </ul>
+                                </ul>
+                            </td>
+                            <td>
+                                <!-- Bad Example -->
+                                <p>Question: "What was Apple's working capital compared to Nvidia in 2024?"</p>
+                                <p><b>Calculation(s):</b></p>
+                                <ul>
+                                    <p>Current Assets - Current Liabilities = Apple : 152,987 - 176,392 and Nvidia: 44,345 - 10,631</p>
+                                    <p><b>Checklist</b></p>
+                                    <ul>
+                                        <li>Shows equation first ❌ → It did, but didn't explicitly specify using 'Equation: '
+                                        <li>Report name stated before each calculation ❌ → It used company names instead of report names
+                                        <li>Calculations are on a new line (if more than one) ❌ → Calculations are side by side
+                                    </ul>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                    If the calculations can still be understood, but are not in the correct format, mark this down just slightly. 
+                </p>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                If it's incomprehensible, mark it down heavily (at least 2 levels)
+            </p>
+            </details>
+            <details>
+                <summary>Answer: Final Answer</summary>
+                <ul>
+                    <li>Concise answer(s)
+                    <li>Report name before each answer (if more than one report is used)
+                    <li>Separate points each on a new line
+                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Good Example</th>
+                            <th>Bad Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!-- Good Example -->
+                                <p>Question: "What was Amazon's current ratio in 2024?"</p>
+                                <p><b>Final Answer:</b></p>
+                                <p>Amazon 10-K 2024: 1.06</p>
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Concise answer(s) ✅
+                                    <li>Report name before each answer (if required) ✅
+                                    <li>Separate points each on a new line ℹ️
+                                </ul>
+                            </td>
+                            <td>
+                                <!-- Bad Example -->
+                                <p>Question: "What was Apple's current ratio compared to Nvidia in 2024?"</p>
+                                <p><b>Final Answer:</b></p>
+                                <p>Apple: 0.87, Nvidia: 4.17</p>
+                                <p><b>Checklist</b></p>
+                                <ul>
+                                    <li>Concise answer(s) ✅
+                                    <li>Report name before each answer (if required) ❌ → Company names are used, not report names
+                                    <li>Separate points each on a new line ❌ → Side by side instead of new lines
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                    If the answer can be understood but is verbose, mark this down just slightly.
+                </p>
+                <p style="color: red; font-size: 1.25rem; font-weight: bold;">
+                For example, if company names are used instead of report names, mark it down slightly. If no names are used at all, mark it down heavily (at least 2 levels)
+            </p>
+            </details>
+            <h1>The Submission</h1>
+            <h2>Select Question Category</h2>
+        <ul style="list-style-type: none; padding: 0; font-size: 1rem;">
+            <li style="margin-bottom: 1rem;">
+            <label style="cursor: not-allowed; color: #ccc;">
+                <input type="radio" name="category" value="A" style="margin-right: 0.5rem;" disabled>
+                Category A
+            </label>
+            
+            <li style="margin-bottom: 1rem;">
+            <label style="cursor: not-allowed; color: #ccc;">
+                <input type="radio" name="category" value="B" style="margin-right: 0.5rem;" disabled>
+                Category B
+            </label>
+            
+            <li>
+            <label style="cursor: not-allowed; font-weight: bold;">
+                <input type="radio" name="category" value="C" style="margin-right: 0.5rem;" checked readonly>
+                Category C
+            </label>
+            
+        </ul>
+            <div style="margin-top: 1rem;">
+                <label for="htmlUrls" style="font-size: 1rem; font-weight: bold;">URLs</label>
+                <textarea id="htmlUrls" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; background-color: #f0f0f0;" readonly>
+https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm
+https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm
+https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm#i13eac97307cc485c971e826acbda8be7_97
+                </textarea>
+            </div>
+            <div style="margin-top: 1rem;">
+                <label for="userQuestion" style="font-size: 1rem; font-weight: bold;">Enter your question:</label>
+                <textarea id="userQuestion" rows="1" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; background-color: #f0f0f0;" readonly>What was Amazon's debt to equity ratio compared with Apple and Nvidia in '24?</textarea>
+            </div>
+            <div id="documentsBox" style="margin-top: 1rem;">
+                <label for="userQuestion" style="font-size: 1rem; font-weight: bold;">Document(s):</label>
+                <textarea id="userQuestion" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; background-color: #f0f0f0;" readonly>
+Amazon 10-K 2024, Nvidia 10-K 2024, Apple 10-K 2024
+                </textarea>
+            </div>
+            <div id="pagesBox" style="margin-top: 1rem;">
+                <label for="userQuestion" style="font-size: 1rem; font-weight: bold;">Page(s):</label>
+                <textarea id="userQuestion" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; background-color: #f0f0f0;" readonly>
+Amazon: 39
+Nvidia: 52
+Apple: 31
+                </textarea>
+            </div>
+            <div style="margin-top: 1rem;" id="finalAnswerBox">
+                <label for="userQuestion" style="font-size: 1rem; font-weight: bold;">Final Answer:</label>
+                <textarea id="userQuestion" rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; background-color: #f0f0f0;" readonly>
+Amazon is 338924, Nvidia is 12,435 and Apple is 308030
+                </textarea>
+            </div>
+        <h1>Ratings</h1>
+        <h3>
+            Select the suitable rating for each of the following metric for this submission.
+        </h3>
+        
+        <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+            <h3>Contains PII:</h3>
+            <label>
+                <input type="checkbox" id="containsPII" style="margin-right: 0.5rem;">
+                Yes, this submission contains Personally Identifiable Information (PII)
+            </label>
+        </div>
+
+        <div id="ratingsContainer">
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>URL(s):</h3>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                    <li>
+                        <label>
+                            <input type="radio" name="urlRating" value="invalidURL" style="margin-right: 0.5rem;">
+                            Invalid
+                        </label>
+                        <span title="At least one of the URLs required to answer the question does not meet one or more of the criteria:
+                            1. Valid SEC EDGAR URL
+                            2. 10-K or 10-Q
+                            3. Report is published on or after October 2023" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="urlRating" value="validURL" style="margin-right: 0.5rem;">
+                            Valid
+                        </label>
+                        <span title="All URLs required to answer the question meet all the criteria:
+                            1. Valid SEC EDGAR URL
+                            2. 10-K or 10-Q
+                            3. Report is published on or after October 2023" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>Questions:</h3>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                    <li>
+                        <label>
+                            <input type="radio" name="questionRating" value="dontFollowCategory" style="margin-right: 0.5rem;">
+                            Do not follow the selected category
+                        </label>
+                        <span title="If the question does not follow the selected category, mark it as invalid." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="questionRating" value="followCategory" style="margin-right: 0.5rem;">
+                            Follow the selected category
+                        </label>
+                        <span title="If the question follows the selected category, mark it as valid." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000; display: none;" id="questionDifficultyBox">
+                <h3>Question Creativity:</h3>
+                <p>Since the selected category is B or C, how creative and/or difficult is the question? More basic questions should be on the lower end. Note: this metric is to identify top workers for this project, workers are not required to submit super creative prompts.</p>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                <li>
+                <label>
+                <input type="radio" name="difficultyRating" value="notCreative" style="margin-right: 0.5rem;">
+                Difficult but not creative
+                </label>
+                <span title="Where most submissions will be. The question is challenging but does not require much creativity. Example: Compare the current ratio for Apple and Nvidia" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                
+                <li>
+                <label>
+                <input type="radio" name="difficultyRating" value="somewhatCreative" style="margin-right: 0.5rem;">
+                Somewhat creative
+                </label>
+                <span title="The question is moderately creative and requires some thought or effort to answer." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                <li>
+                <label>
+                <input type="radio" name="difficultyRating" value="veryCreative" style="margin-right: 0.5rem;">
+                Top 1%
+                </label>
+                <span title="The question is exceptionally creative and challenging, requiring significant thought or effort to answer." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                
+                </ul>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                const followsCategoryInputs = document.querySelectorAll('input[name="questionRating"]');
+                const difficultyBox = document.getElementById('questionDifficultyBox');
+
+                function toggleDifficultyBox() {
+                    const isFollowsCategoryChecked = Array.from(followsCategoryInputs).some(input => input.checked && input.value === 'followCategory');
+                    difficultyBox.style.display = isFollowsCategoryChecked ? 'block' : 'none';
+                }
+
+                followsCategoryInputs.forEach(input => {
+                    input.addEventListener('change', toggleDifficultyBox);
+                });
+
+                // Initialize visibility on page load
+                toggleDifficultyBox();
+                });
+            </script>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                const categoryInputs = document.querySelectorAll('input[name="category"]');
+                const difficultyBox = document.getElementById('questionDifficultyBox');
+
+                function toggleDifficultyBox() {
+                    const selectedCategory = Array.from(categoryInputs).find(input => input.checked)?.value;
+                    if (selectedCategory === 'B' || selectedCategory === 'C') {
+                    difficultyBox.style.display = 'block';
+                    } else {
+                    difficultyBox.style.display = 'none';
+                    }
+                }
+
+                categoryInputs.forEach(input => {
+                    input.addEventListener('change', toggleDifficultyBox);
+                });
+
+                // Initialize visibility on page load
+                toggleDifficultyBox();
+                });
+            </script>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>Document(s):</h3>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                <li>
+                    <label>
+                    <input type="radio" name="documentRating" value="incorrectDocument" style="margin-right: 0.5rem;">
+                    Incomprehensible / Incorrect
+                    </label>
+                    <span title="Documents mentioned are not the ones used to answer the question or cannot be understood." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                </li>
+                <li>
+                    <label>
+                    <input type="radio" name="documentRating" value="correctDocumentButFormat" style="margin-right: 0.5rem;">
+                    Correct but doesn't follow format
+                    </label>
+                    <span title="Documents mentioned are correct but do not follow the format: 
+                    1. Only states documents used to answer the question
+                    2. 10-K: [company name] 10-K [year];
+                    3. 10-Q: [company name]; 10-Q [quarter] [year]
+                    4. Each report on a new line" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                </li>
+                <li>
+                    <label>
+                    <input type="radio" name="documentRating" value="correctDocument" style="margin-right: 0.5rem;">
+                    Correct and follows format
+                    </label>
+                    <span title="Documents mentioned are correct AND follow the format: 
+                    1. Only states documents used to answer the question
+                    2. 10-K: [company name] 10-K [year];
+                    3. 10-Q: [company name]; 10-Q [quarter]; [year];
+                    4. Each report on a new line" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                </li>
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>Answer: Page(s)</h3>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                    <li>
+                        <label>
+                            <input type="radio" name="answerPagesRating" value="incorrectPages" style="margin-right: 0.5rem;">
+                            Incomprehensible / Incorrect
+                        </label>
+                        <span title="Pages mentioned are not the ones used to answer the question or cannot be understood." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    
+                    <li>
+                        <label>
+                            <input type="radio" name="answerPagesRating" value="correctPagesButFormat" style="margin-right: 0.5rem;">
+                            Correct but doesn't follow format
+                        </label>
+                        <span title="Pages mentioned are correct but do not follow the format: 
+                        1. Only states pages required to answer the question
+                        2. Category A & B: Page numbers separated by a comma and a space
+                        3. Category C: [document]; : Pages [page number(s)];
+                        4. Each report on a new line (if multiple reports)" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    <li>
+                        <label>
+                            <input type="radio" name="answerPagesRating" value="correctPages" style="margin-right: 0.5rem;">
+                            Correct and follows format
+                        </label>
+                        <span title="Documents mentioned are correct AND follow the format: 
+                        1. Only states documents used to answer the question
+                        2. 10-K: [company name] 10-K [year];
+                        3. 10-Q: [company name]; 10-Q [quarter]; [year];
+                        4. Each report on a new line" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>    
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>Answer: Calculation(s)</h3>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                    <li>
+                        <label>
+                            <input type="radio" name="answerCalculationsRating" value="incorrectCalc" style="margin-right: 0.5rem;">
+                            Incomprehensible / Incorrect
+                        </label>
+                        <span title="Calculations are either incorrect or misleading, and are not the ones used to answer the question." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    
+                    <li>
+                        <label>
+                            <input type="radio" name="answerCalculationsRating" value="correctCalcButFormat" style="margin-right: 0.5rem;">
+                            Correct but doesn't follow format
+                        </label>
+                        <span title="Calculations make sense but do not follow the format: 
+                        1. Shows equation first
+                        2. Report name stated before each calculation
+                        3. Calculations are on a new line (if more than one)" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    <li>
+                        <label>
+                            <input type="radio" name="answerCalculationsRating" value="correctCalc" style="margin-right: 0.5rem;">
+                            Correct and follows format
+                        </label>
+                        <span title="Calculations make sense AND follow the format: 
+                        1. Shows equation first
+                        2. Report name stated before each calculation
+                        3. Calculations are on a new line (if more than one)" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>Answer: Final Answer</h3>
+                <ul style="list-style-type: none; padding: 0; display: flex; justify-content: space-around; font-size: 1rem; width: 100%;">
+                    <li>
+                        <label>
+                            <input type="radio" name="finalAnswerRating" value="incorrectFinal" style="margin-right: 0.5rem;">
+                            Incomprehensible / Incorrect
+                        </label>
+                        <span title="Calculations are either incorrect or misleading, and are not the ones used to answer the question." style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    
+                    <li>
+                        <label>
+                            <input type="radio" name="finalAnswerRating" value="correctFinalButFormat" style="margin-right: 0.5rem;">
+                            Correct but doesn't satisfy the criteria
+                        </label>
+                        <span title="Answer is correct but does not satisfy the criteria: 
+                        1. Concise answer(s)
+                        2. Report name before each answer (if more than one report is used)
+                        3. Separate points each on a new line" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    <li>
+                        <label>
+                            <input type="radio" name="finalAnswerRating" value="correctFinal" style="margin-right: 0.5rem;">
+                            Correct and follows format
+                        </label>
+                        <span title="Answer is correct AND satisfies the criteria: 
+                        1. Concise answer(s)
+                        2. Report name before each answer (if more than one report is used)
+                        3. Separate points each on a new line" style="display: inline-block; border: 1px solid #ccc; border-radius: 50%; width: 1.5rem; height: 1.5rem; text-align: center; line-height: 1.5rem; font-weight: bold; font-size: 1rem;">i</span>
+                    <li>
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; background-color: #fff; padding: 1rem; border-radius: 8px; border: 2px solid #000;">
+                <h3>Additional Comments</h3>
+                <textarea rows="4" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;" placeholder="Enter any additional comments here..."></textarea>
+            </div>
+        </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <button type="button" id="submitButton" style="padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: bold; color: #fff; background-color: #007bff; border: none; border-radius: 4px; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const piiCheckbox = document.getElementById('containsPII');
+            const ratingsContainer = document.getElementById('ratingsContainer');
+            const documentsBox = document.getElementById('documentsBox');
+            const pagesBox = document.getElementById('pagesBox');
+            const finalAnswerBox = document.getElementById('finalAnswerBox');
+
+            piiCheckbox.addEventListener('change', function () {
+                if (piiCheckbox.checked) {
+                    ratingsContainer.style.display = 'none';
+                    documentsBox.style.display = 'none';
+                    pagesBox.style.display = 'none';
+                    finalAnswerBox.style.display = 'none';
+                } else {
+                    ratingsContainer.style.display = 'block';
+                    documentsBox.style.display = 'block';
+                    pagesBox.style.display = 'block';
+                    finalAnswerBox.style.display = 'block';
+                }
+            });
+        });
+
+        document.getElementById('submitButton').addEventListener('click', function () {
+            const data = {
+                containsPII: document.getElementById('containsPII').checked, // Capture PII checkbox state
+                rater_id: 1, // Hardcoded rater ID
+                submission_id: 100, // Replace with actual submission ID
+                worker_id: 2, // Hardcoded worker ID
+                urlRating: document.querySelector('input[name="urlRating"]:checked')?.value || null,
+                questionRating: document.querySelector('input[name="questionRating"]:checked')?.value || null,
+                questionCreativity: document.querySelector('input[name="difficultyRating"]:checked')?.value || null,
+                documentRating: document.querySelector('input[name="documentRating"]:checked')?.value || null,
+                answerPagesRating: document.querySelector('input[name="answerPagesRating"]:checked')?.value || null,
+                answerCalculationsRating: document.querySelector('input[name="answerCalculationsRating"]:checked')?.value || null,
+                finalAnswerRating: document.querySelector('input[name="finalAnswerRating"]:checked')?.value || null,
+            };
+
+            fetch('http://127.0.0.1:5000/rnr_validator.py', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type, Authorization"
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Response from rnr_validator.py:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
